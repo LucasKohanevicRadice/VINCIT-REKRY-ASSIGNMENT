@@ -9,17 +9,11 @@ import {
   isInPast,
 } from '../utils/dateUtils';
 
-/**
- * Yksittäinen validointivirhe
- */
 export interface ValidationError {
   field: string;
   message: string;
 }
 
-/**
- * Validoinnin tulos
- */
 export interface ValidationResult {
   isValid: boolean;
   errors: ValidationError[];
