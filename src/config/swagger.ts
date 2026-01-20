@@ -11,9 +11,9 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Kokoushuonevaraus API',
+      title: 'Antakaa minulle töitä API',
       version: '1.0.0',
-      description: 'REST API kokoushuoneiden varaamiseen',
+      description: 'REST API fullstack trainee paikan antamiseen Lucakselle',
     },
     servers: [
       {
@@ -66,12 +66,12 @@ const options: swaggerJsdoc.Options = {
             startTime: {
               type: 'string',
               format: 'date-time',
-              example: '2024-01-15T10:00:00Z',
+              example: '2026-06-15T10:00:00Z',
             },
             endTime: {
               type: 'string',
               format: 'date-time',
-              example: '2024-01-15T11:00:00Z',
+              example: '2026-06-15T11:00:00Z',
             },
           },
         },
