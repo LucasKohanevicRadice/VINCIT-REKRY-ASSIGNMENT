@@ -42,7 +42,7 @@ describe('booking.validator', () => {
      */
     it('should return valid for correct booking data', () => {
       const booking = createValidBooking();
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(true);
       expect(result.errors).toHaveLength(0);
@@ -60,7 +60,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       delete (booking as Record<string, unknown>).roomId;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -76,7 +76,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       delete (booking as Record<string, unknown>).userId;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -92,7 +92,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       delete (booking as Record<string, unknown>).userEmail;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -108,7 +108,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       delete (booking as Record<string, unknown>).title;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -124,7 +124,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       delete (booking as Record<string, unknown>).startTime;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -140,7 +140,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       delete (booking as Record<string, unknown>).endTime;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -160,7 +160,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       booking.userEmail = 'not-an-email';
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -176,7 +176,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       booking.startTime = 'not-a-date';
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -192,7 +192,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       booking.endTime = 'not-a-date';
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -214,7 +214,7 @@ describe('booking.validator', () => {
       pastDate.setDate(pastDate.getDate() - 1); // Eilen
       booking.startTime = pastDate.toISOString();
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -233,7 +233,7 @@ describe('booking.validator', () => {
       pastDate.setDate(pastDate.getDate() - 1); // Eilen
       booking.endTime = pastDate.toISOString();
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -256,7 +256,7 @@ describe('booking.validator', () => {
       booking.startTime = booking.endTime;
       booking.endTime = temp;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -272,7 +272,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       booking.endTime = booking.startTime;
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -292,7 +292,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       booking.roomId = '';
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -308,7 +308,7 @@ describe('booking.validator', () => {
       const booking = createValidBooking();
       booking.title = '';
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
@@ -334,7 +334,7 @@ describe('booking.validator', () => {
         endTime: 'invalid',
       };
 
-      const result = validateCreateBooking(booking);
+      const result: ValidationResult = validateCreateBooking(booking);
 
       expect(result.isValid).toBe(false);
       expect(result.errors.length).toBeGreaterThan(1);
