@@ -35,7 +35,7 @@ function hasOverlappingBooking(
   startTime: Date,
   endTime: Date,
 ): boolean {
-  const roomBookings = bookingDb.getByRoomId(roomId);
+  const roomBookings = bookingDb.getBookingsByRoomId(roomId);
   return roomBookings.some((existing) =>
     doTimeRangesOverlap(
       startTime,
@@ -70,13 +70,13 @@ export function createBooking(dto: CreateBookingDto): BookingResponse {
     createdAt: new Date(),
   };
 
-  bookingDb.create(booking);
+  bookingDb.createBooking(booking);
 
   return toBookingResponse(booking, room.name);
 }
 
 export function deleteBooking(bookingId: string): void {
-  const deleted = bookingDb.delete(bookingId);
+  const deleted = bookingDb.deleteBooking(bookingId);
   if (!deleted) {
     throw new NotFoundError('Booking', bookingId);
   }
@@ -88,6 +88,6 @@ export function getBookingsByRoomId(roomId: string): BookingResponse[] {
     throw new NotFoundError('Room', roomId);
   }
 
-  const bookings = bookingDb.getByRoomId(roomId);
+  const bookings = bookingDb.getBookingsByRoomId(roomId);
   return bookings.map((booking) => toBookingResponse(booking, room.name));
 }

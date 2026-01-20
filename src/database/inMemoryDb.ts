@@ -33,7 +33,7 @@ export const roomDb = {
     return Array.from(rooms.values());
   },
 
-  getRoomById(id: string): Room | null {
+  getById(id: string): Room | null {
     return rooms.get(id) || null;
   },
 

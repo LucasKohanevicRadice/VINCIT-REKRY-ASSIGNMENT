@@ -8,7 +8,7 @@ import { NotFoundError, ConflictError } from '../../../src/errors/customErrors';
 
 describe('booking.service', () => {
   beforeEach(() => {
-    bookingDb.clear();
+    bookingDb.clearBookings();
   });
 
   const validDto = () => {
@@ -52,7 +52,7 @@ describe('booking.service', () => {
 
       deleteBooking(booking.id);
 
-      expect(bookingDb.getById(booking.id)).toBeNull();
+      expect(bookingDb.getBookingById(booking.id)).toBeNull();
     });
 
     it('throws NotFoundError for non-existent booking', () => {

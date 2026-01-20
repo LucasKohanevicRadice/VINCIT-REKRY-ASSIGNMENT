@@ -23,24 +23,24 @@ REST API kokoushuoneiden varaamiseen. Mahdollistaa varausten luomisen, peruutuks
 
 ## Teknologiastack
 
-| Teknologia | Versio | Käyttötarkoitus |
-|-----------|--------|----------------|
-| **TypeScript** | 5.9.3 | Ohjelmointikieli |
-| **Express.js** | 5.2.1 | Web-framework |
-| **Jest** | 30.2.0 | Testausframework |
-| **Supertest** | 7.2.2 | HTTP-testaus |
+| Teknologia          | Versio        | Käyttötarkoitus   |
+| ------------------- | ------------- | ----------------- |
+| **TypeScript**      | 5.9.3         | Ohjelmointikieli  |
+| **Express.js**      | 5.2.1         | Web-framework     |
+| **Jest**            | 30.2.0        | Testausframework  |
+| **Supertest**       | 7.2.2         | HTTP-testaus      |
 | **Swagger/OpenAPI** | 6.2.8 / 5.0.1 | API-dokumentaatio |
-| **uuid** | 13.0.0 | ID-generointi |
+| **uuid**            | 13.0.0        | ID-generointi     |
 
 ---
 
 ## API-endpointit
 
-| Metodi | Endpoint | Kuvaus | Vastaukset |
-|--------|----------|--------|-----------|
-| **POST** | `/api/bookings` | Luo uusi varaus | 201, 400, 404, 409 |
-| **DELETE** | `/api/bookings/:id` | Poista varaus | 204, 404 |
-| **GET** | `/api/rooms/:roomId/bookings` | Hae huoneen varaukset | 200, 404 |
+| Metodi     | Endpoint                      | Kuvaus                | Vastaukset         |
+| ---------- | ----------------------------- | --------------------- | ------------------ |
+| **POST**   | `/api/bookings`               | Luo uusi varaus       | 201, 400, 404, 409 |
+| **DELETE** | `/api/bookings/:id`           | Poista varaus         | 204, 404           |
+| **GET**    | `/api/rooms/:roomId/bookings` | Hae huoneen varaukset | 200, 404           |
 
 ### Esimerkkipyyntö: Varauksen luonti
 
@@ -161,12 +161,14 @@ tests/
 Projekti sisältää täydellisen **OpenAPI 3.0** -spesifikaation interaktiivisella Swagger UI:lla.
 
 **Käyttö:**
+
 1. Käynnistä palvelin: `npm run dev`
 2. Avaa selaimessa: http://localhost:3000/api-docs
 3. Tutustu endpointeihin
 4. Testaa API:a "Try it out" -toiminnolla
 
 **Dokumentaatio sisältää:**
+
 - Jokaisen endpointin kuvauksen
 - Request/response-skeemat
 - HTTP-statuskoodit
@@ -181,6 +183,7 @@ Projekti noudattaa **TDD-lähestymistapaa** ja sisältää kattavan testikokoelm
 **Testikattavuus:** 96.84%
 
 **Testityypit:**
+
 - **Yksikkötestit** (32 testiä):
   - Validointi (17 testiä)
   - Palvelut (7 testiä)
@@ -189,6 +192,7 @@ Projekti noudattaa **TDD-lähestymistapaa** ja sisältää kattavan testikokoelm
   - API-endpointit end-to-end
 
 **Testaustyökalut:**
+
 - Jest 30.x - Testausframework
 - Supertest - HTTP-testaus
 - ts-jest - TypeScript-tuki
@@ -212,9 +216,10 @@ API valvoo seuraavia liiketoimintasääntöjä:
 3. **Aikavälin validointi** - Aloitusajan on oltava ennen lopetusaikaa
 
 **Päällekkäisyyden tarkistus:**
+
 ```typescript
 // Varaukset menevät päällekkäin jos:
-newStart < existingEnd && newEnd > existingStart
+newStart < existingEnd && newEnd > existingStart;
 ```
 
 ---
@@ -223,12 +228,12 @@ newStart < existingEnd && newEnd > existingStart
 
 API sisältää neljä esiladattua kokoushuonetta:
 
-| ID | Nimi |
-|----|------|
+| ID     | Nimi              |
+| ------ | ----------------- |
 | room-1 | Neuvotteluhuone A |
 | room-2 | Neuvotteluhuone B |
-| room-3 | Kokoushuone C |
-| room-4 | Auditorio |
+| room-3 | Kokoushuone C     |
+| room-4 | Auditorio         |
 
 ---
 
@@ -237,12 +242,14 @@ API sisältää neljä esiladattua kokoushuonetta:
 API käyttää standardoituja HTTP-statuskoodeja ja yhtenäistä virheformaattia:
 
 **Virhetyypit:**
+
 - **400 Bad Request** - Validointivirhe
 - **404 Not Found** - Resurssia ei löydy
 - **409 Conflict** - Päällekkäinen varaus
 - **500 Internal Server Error** - Odottamaton virhe
 
 **Virhevastauk esimerkki:**
+
 ```json
 {
   "error": {

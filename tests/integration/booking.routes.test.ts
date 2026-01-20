@@ -4,7 +4,7 @@ import { bookingDb } from '../../src/database/inMemoryDb';
 
 describe('Booking API', () => {
   beforeEach(() => {
-    bookingDb.clear();
+    bookingDb.clearBookings();
   });
 
   const validBooking = () => {
