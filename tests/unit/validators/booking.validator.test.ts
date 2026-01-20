@@ -1,14 +1,15 @@
-import { validateCreateBooking, ValidationResult } from '../../../src/validators/booking.validator';
+import {
+  validateCreateBooking,
+  ValidationResult,
+} from '../../../src/validators/booking.validator';
 
 describe('booking.validator', () => {
-
   /**
    * validateCreateBooking - Testaa varauksen luontipyynnön validointia
    * Funktio tarkistaa että kaikki pakolliset kentät ovat oikein muotoiltuja
    * ja business-säännöt täyttyvät (ajat tulevaisuudessa, startTime < endTime)
    */
   describe('validateCreateBooking', () => {
-
     /**
      * Apufunktio: Luo validi varausobjekti testausta varten
      * Käyttää tulevaisuuden päivämääriä jotta menneisyystarkistus ei estä
@@ -63,7 +64,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'roomId' })
+        expect.objectContaining({ field: 'roomId' }),
       );
     });
 
@@ -79,7 +80,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'userId' })
+        expect.objectContaining({ field: 'userId' }),
       );
     });
 
@@ -95,7 +96,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'userEmail' })
+        expect.objectContaining({ field: 'userEmail' }),
       );
     });
 
@@ -111,7 +112,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'title' })
+        expect.objectContaining({ field: 'title' }),
       );
     });
 
@@ -127,7 +128,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'startTime' })
+        expect.objectContaining({ field: 'startTime' }),
       );
     });
 
@@ -143,7 +144,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'endTime' })
+        expect.objectContaining({ field: 'endTime' }),
       );
     });
 
@@ -163,7 +164,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'userEmail' })
+        expect.objectContaining({ field: 'userEmail' }),
       );
     });
 
@@ -179,7 +180,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'startTime' })
+        expect.objectContaining({ field: 'startTime' }),
       );
     });
 
@@ -195,7 +196,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'endTime' })
+        expect.objectContaining({ field: 'endTime' }),
       );
     });
 
@@ -217,7 +218,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'startTime' })
+        expect.objectContaining({ field: 'startTime' }),
       );
     });
 
@@ -236,7 +237,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'endTime' })
+        expect.objectContaining({ field: 'endTime' }),
       );
     });
 
@@ -259,7 +260,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'endTime' })
+        expect.objectContaining({ field: 'endTime' }),
       );
     });
 
@@ -275,7 +276,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'endTime' })
+        expect.objectContaining({ field: 'endTime' }),
       );
     });
 
@@ -295,7 +296,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'roomId' })
+        expect.objectContaining({ field: 'roomId' }),
       );
     });
 
@@ -311,7 +312,7 @@ describe('booking.validator', () => {
 
       expect(result.isValid).toBe(false);
       expect(result.errors).toContainEqual(
-        expect.objectContaining({ field: 'title' })
+        expect.objectContaining({ field: 'title' }),
       );
     });
 

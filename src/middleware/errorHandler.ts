@@ -5,12 +5,12 @@ export function errorHandler(
   err: Error,
   _req: Request,
   res: Response,
-  _next: NextFunction
+  _next: NextFunction,
 ): void {
   if (err instanceof AppError) {
     const response: { code: string; message: string; details?: unknown } = {
       code: err.code,
-      message: err.message
+      message: err.message,
     };
 
     if (err.details) {
@@ -25,7 +25,7 @@ export function errorHandler(
   res.status(500).json({
     error: {
       code: 'INTERNAL_SERVER_ERROR',
-      message: 'An unexpected error occurred'
-    }
+      message: 'An unexpected error occurred',
+    },
   });
 }

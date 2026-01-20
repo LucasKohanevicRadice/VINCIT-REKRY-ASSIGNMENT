@@ -1,4 +1,8 @@
-import { createBooking, deleteBooking, getBookingsByRoomId } from '../../../src/services/booking.service';
+import {
+  createBooking,
+  deleteBooking,
+  getBookingsByRoomId,
+} from '../../../src/services/booking.service';
 import { bookingDb } from '../../../src/database/inMemoryDb';
 import { NotFoundError, ConflictError } from '../../../src/errors/customErrors';
 

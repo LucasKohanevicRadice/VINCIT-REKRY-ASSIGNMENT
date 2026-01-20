@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router } from 'express';
 import {
   createBookingHandler,
   deleteBookingHandler,
   getBookingsByRoomHandler,
-} from "../controllers/booking.controller";
+} from '../controllers/booking.controller';
 
 const router = Router();
 
@@ -45,7 +45,7 @@ const router = Router();
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.post("/bookings", createBookingHandler);
+router.post('/bookings', createBookingHandler);
 
 /**
  * @openapi
@@ -70,7 +70,7 @@ router.post("/bookings", createBookingHandler);
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.delete("/bookings/:id", deleteBookingHandler);
+router.delete('/bookings/:id', deleteBookingHandler);
 
 /**
  * @openapi
@@ -101,6 +101,6 @@ router.delete("/bookings/:id", deleteBookingHandler);
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.get("/rooms/:roomId/bookings", getBookingsByRoomHandler);
+router.get('/rooms/:roomId/bookings', getBookingsByRoomHandler);
 
 export default router;

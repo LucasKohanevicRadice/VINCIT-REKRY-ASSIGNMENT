@@ -5,18 +5,18 @@
  * joka säilyttää datan vain sovelluksen ajon ajan.
  */
 
-import { Room } from "../models/room.model";
-import { Booking } from "../models/booking.model";
+import { Room } from '../models/room.model';
+import { Booking } from '../models/booking.model';
 
 /**
  * Esiladatut kokoushuoneet
  * Nämä huoneet ovat käytettävissä heti sovelluksen käynnistyessä
  */
 const rooms: Map<string, Room> = new Map([
-  ["room-1", { id: "room-1", name: "Neuvotteluhuone A" }],
-  ["room-2", { id: "room-2", name: "Neuvotteluhuone B" }],
-  ["room-3", { id: "room-3", name: "Kokoushuone C" }],
-  ["room-4", { id: "room-4", name: "Auditorio" }],
+  ['room-1', { id: 'room-1', name: 'Neuvotteluhuone A' }],
+  ['room-2', { id: 'room-2', name: 'Neuvotteluhuone B' }],
+  ['room-3', { id: 'room-3', name: 'Kokoushuone C' }],
+  ['room-4', { id: 'room-4', name: 'Auditorio' }],
 ]);
 
 /**

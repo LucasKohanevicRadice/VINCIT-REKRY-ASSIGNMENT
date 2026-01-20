@@ -5,13 +5,10 @@ module.exports = {
   roots: ['<rootDir>/tests'],
   testMatch: ['**/*.test.ts'],
   moduleFileExtensions: ['ts', 'js', 'json'],
-  collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/index.ts'
-  ],
+  collectCoverageFrom: ['src/**/*.ts', '!src/index.ts'],
   coverageDirectory: 'coverage',
   verbose: true,
   moduleNameMapper: {
-    '^uuid$': '<rootDir>/tests/__mocks__/uuid.ts'
-  }
+    '^uuid$': '<rootDir>/tests/__mocks__/uuid.ts',
+  },
 };

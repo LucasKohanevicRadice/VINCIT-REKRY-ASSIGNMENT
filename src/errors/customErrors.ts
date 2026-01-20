@@ -10,7 +10,12 @@ export class AppError extends Error {
   public readonly code: string;
   public readonly details?: unknown;
 
-  constructor(statusCode: number, code: string, message: string, details?: unknown) {
+  constructor(
+    statusCode: number,
+    code: string,
+    message: string,
+    details?: unknown,
+  ) {
     super(message);
     this.statusCode = statusCode;
     this.code = code;
@@ -38,7 +43,11 @@ export class ValidationError extends AppError {
  */
 export class NotFoundError extends AppError {
   constructor(resource: string, id: string) {
-    super(404, `${resource.toUpperCase()}_NOT_FOUND`, `${resource} with ID '${id}' not found`);
+    super(
+      404,
+      `${resource.toUpperCase()}_NOT_FOUND`,
+      `${resource} with ID '${id}' not found`,
+    );
     this.name = 'NotFoundError';
     Object.setPrototypeOf(this, NotFoundError.prototype);
   }

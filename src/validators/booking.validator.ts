@@ -3,7 +3,11 @@
  */
 
 import { CreateBookingDto } from '../models/booking.model';
-import { isValidIsoDateString, parseIsoDate, isInPast } from '../utils/dateUtils';
+import {
+  isValidIsoDateString,
+  parseIsoDate,
+  isInPast,
+} from '../utils/dateUtils';
 
 /**
  * Yksittäinen validointivirhe
@@ -46,7 +50,9 @@ function isValidEmail(email: string): boolean {
  * @param dto - Varauksen luontipyyntö
  * @returns ValidationResult - isValid ja mahdolliset virheet
  */
-export function validateCreateBooking(dto: Partial<CreateBookingDto>): ValidationResult {
+export function validateCreateBooking(
+  dto: Partial<CreateBookingDto>,
+): ValidationResult {
   const errors: ValidationError[] = [];
 
   // 1. Pakolliset kentät
@@ -65,7 +71,10 @@ export function validateCreateBooking(dto: Partial<CreateBookingDto>): Validatio
   if (dto.userEmail === undefined || dto.userEmail === null) {
     errors.push({ field: 'userEmail', message: 'userEmail on pakollinen' });
   } else if (!isValidEmail(dto.userEmail)) {
-    errors.push({ field: 'userEmail', message: 'userEmail ei ole validi sähköpostiosoite' });
+    errors.push({
+      field: 'userEmail',
+      message: 'userEmail ei ole validi sähköpostiosoite',
+    });
   }
 
   if (dto.title === undefined || dto.title === null) {
@@ -83,35 +92,50 @@ export function validateCreateBooking(dto: Partial<CreateBookingDto>): Validatio
   if (dto.startTime === undefined || dto.startTime === null) {
     errors.push({ field: 'startTime', message: 'startTime on pakollinen' });
   } else if (!isValidIsoDateString(dto.startTime)) {
-    errors.push({ field: 'startTime', message: 'startTime ei ole validi ISO 8601 -päivämäärä' });
+    errors.push({
+      field: 'startTime',
+      message: 'startTime ei ole validi ISO 8601 -päivämäärä',
+    });
   } else {
     startDate = parseIsoDate(dto.startTime);
     startTimeValid = true;
 
     // Business-sääntö: ei menneisyyteen
     if (isInPast(startDate)) {
-      errors.push({ field: 'startTime', message: 'startTime ei voi olla menneisyydessä' });
+      errors.push({
+        field: 'startTime',
+        message: 'startTime ei voi olla menneisyydessä',
+      });
     }
   }
 
   if (dto.endTime === undefined || dto.endTime === null) {
     errors.push({ field: 'endTime', message: 'endTime on pakollinen' });
   } else if (!isValidIsoDateString(dto.endTime)) {
-    errors.push({ field: 'endTime', message: 'endTime ei ole validi ISO 8601 -päivämäärä' });
+    errors.push({
+      field: 'endTime',
+      message: 'endTime ei ole validi ISO 8601 -päivämäärä',
+    });
   } else {
     endDate = parseIsoDate(dto.endTime);
     endTimeValid = true;
 
     // Business-sääntö: ei menneisyyteen
     if (isInPast(endDate)) {
-      errors.push({ field: 'endTime', message: 'endTime ei voi olla menneisyydessä' });
+      errors.push({
+        field: 'endTime',
+        message: 'endTime ei voi olla menneisyydessä',
+      });
     }
   }
 
   // 3. Business-sääntö: startTime < endTime
   if (startTimeValid && endTimeValid && startDate && endDate) {
     if (endDate.getTime() <= startDate.getTime()) {
-      errors.push({ field: 'endTime', message: 'endTime täytyy olla startTimen jälkeen' });
+      errors.push({
+        field: 'endTime',
+        message: 'endTime täytyy olla startTimen jälkeen',
+      });
     }
   }
 

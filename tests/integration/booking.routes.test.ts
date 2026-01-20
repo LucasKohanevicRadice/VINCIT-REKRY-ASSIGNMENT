@@ -43,19 +43,13 @@ describe('Booking API', () => {
     it('returns 409 for overlapping booking', async () => {
       await request(app).post('/api/bookings').send(validBooking());
 
-      await request(app)
-        .post('/api/bookings')
-        .send(validBooking())
-        .expect(409);
+      await request(app).post('/api/bookings').send(validBooking()).expect(409);
     });
 
     it('returns 404 for non-existent room', async () => {
       const booking = { ...validBooking(), roomId: 'room-999' };
 
-      await request(app)
-        .post('/api/bookings')
-        .send(booking)
-        .expect(404);
+      await request(app).post('/api/bookings').send(booking).expect(404);
     });
   });
 
@@ -65,15 +59,11 @@ describe('Booking API', () => {
         .post('/api/bookings')
         .send(validBooking());
 
-      await request(app)
-        .delete(`/api/bookings/${created.body.id}`)
-        .expect(204);
+      await request(app).delete(`/api/bookings/${created.body.id}`).expect(204);
     });
 
     it('returns 404 for non-existent booking', async () => {
-      await request(app)
-        .delete('/api/bookings/non-existent')
-        .expect(404);
+      await request(app).delete('/api/bookings/non-existent').expect(404);
     });
   });
 
@@ -90,9 +80,7 @@ describe('Booking API', () => {
     });
 
     it('returns 404 for non-existent room', async () => {
-      await request(app)
-        .get('/api/rooms/room-999/bookings')
-        .expect(404);
+      await request(app).get('/api/rooms/room-999/bookings').expect(404);
     });
   });
 });

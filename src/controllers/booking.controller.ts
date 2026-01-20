@@ -1,12 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
-import { createBooking, deleteBooking, getBookingsByRoomId } from '../services/booking.service';
+import {
+  createBooking,
+  deleteBooking,
+  getBookingsByRoomId,
+} from '../services/booking.service';
 import { validateCreateBooking } from '../validators/booking.validator';
 import { ValidationError } from '../errors/customErrors';
 
 export async function createBookingHandler(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> {
   try {
     const validation = validateCreateBooking(req.body);
@@ -25,7 +29,7 @@ export async function createBookingHandler(
 export async function deleteBookingHandler(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> {
   try {
     const id = req.params.id as string;
@@ -39,7 +43,7 @@ export async function deleteBookingHandler(
 export async function getBookingsByRoomHandler(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> {
   try {
     const roomId = req.params.roomId as string;

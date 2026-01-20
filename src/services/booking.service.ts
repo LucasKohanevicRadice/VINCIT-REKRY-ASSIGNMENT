@@ -1,11 +1,22 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Booking, CreateBookingDto, BookingResponse } from '../models/booking.model';
+import {
+  Booking,
+  CreateBookingDto,
+  BookingResponse,
+} from '../models/booking.model';
 import { bookingDb } from '../database/inMemoryDb';
 import { getRoomById } from './room.service';
 import { NotFoundError, ConflictError } from '../errors/customErrors';
-import { parseIsoDate, doTimeRangesOverlap, toIsoString } from '../utils/dateUtils';
+import {
+  parseIsoDate,
+  doTimeRangesOverlap,
+  toIsoString,
+} from '../utils/dateUtils';
 
-function toBookingResponse(booking: Booking, roomName: string): BookingResponse {
+function toBookingResponse(
+  booking: Booking,
+  roomName: string,
+): BookingResponse {
   return {
     id: booking.id,
     roomId: booking.roomId,
@@ -19,10 +30,19 @@ function toBookingResponse(booking: Booking, roomName: string): BookingResponse 
   };
 }
 
-function hasOverlappingBooking(roomId: string, startTime: Date, endTime: Date): boolean {
+function hasOverlappingBooking(
+  roomId: string,
+  startTime: Date,
+  endTime: Date,
+): boolean {
   const roomBookings = bookingDb.getByRoomId(roomId);
-  return roomBookings.some(existing =>
-    doTimeRangesOverlap(startTime, endTime, existing.startTime, existing.endTime)
+  return roomBookings.some((existing) =>
+    doTimeRangesOverlap(
+      startTime,
+      endTime,
+      existing.startTime,
+      existing.endTime,
+    ),
   );
 }
 
@@ -69,5 +89,5 @@ export function getBookingsByRoomId(roomId: string): BookingResponse[] {
   }
 
   const bookings = bookingDb.getByRoomId(roomId);
-  return bookings.map(booking => toBookingResponse(booking, room.name));
+  return bookings.map((booking) => toBookingResponse(booking, room.name));
 }

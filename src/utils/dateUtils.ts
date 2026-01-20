@@ -68,11 +68,13 @@ export function doTimeRangesOverlap(
   newStart: Date,
   newEnd: Date,
   existingStart: Date,
-  existingEnd: Date
+  existingEnd: Date,
 ): boolean {
   // Päällekkäisyys: uusi alkaa ennen vanhan loppua JA uusi loppuu vanhan alun jälkeen
-  return newStart.getTime() < existingEnd.getTime() &&
-         newEnd.getTime() > existingStart.getTime();
+  return (
+    newStart.getTime() < existingEnd.getTime() &&
+    newEnd.getTime() > existingStart.getTime()
+  );
 }
 
 /**
