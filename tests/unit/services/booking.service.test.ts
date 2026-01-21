@@ -52,7 +52,7 @@ describe('booking.service', () => {
 
       deleteBooking(booking.id);
 
-      expect(bookingDb.getBookingById(booking.id)).toBeNull();
+      expect(bookingDb.getBookingById(booking.id)).toBeUndefined();
     });
 
     it('throws NotFoundError for non-existent booking', () => {

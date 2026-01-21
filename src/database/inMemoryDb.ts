@@ -33,8 +33,8 @@ export const roomDb = {
     return Array.from(rooms.values());
   },
 
-  getById(id: string): Room | null {
-    return rooms.get(id) || null;
+  getById(id: string): Room | undefined {
+    return rooms.get(id) || undefined;
   },
 
   roomExists(id: string): boolean {
@@ -50,8 +50,8 @@ export const bookingDb = {
     return Array.from(bookings.values());
   },
 
-  getBookingById(id: string): Booking | null {
-    return bookings.get(id) || null;
+  getBookingById(id: string): Booking | undefined {
+    return bookings.get(id) || undefined;
   },
 
   getBookingsByRoomId(roomId: string): Booking[] {
