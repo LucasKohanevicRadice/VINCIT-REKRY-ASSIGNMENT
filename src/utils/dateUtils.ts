@@ -2,6 +2,8 @@
  * Päivämääräapufunktiot varausten käsittelyyn
  */
 
+import { ValidationError } from '../errors/customErrors';
+
 /**
  * Tarkistaa onko merkkijono validi ISO 8601 -muotoinen päivämäärä
  * @param dateString - Tarkistettava merkkijono
@@ -28,11 +30,11 @@ export function isValidIsoDateString(dateString: string): boolean {
  * Parsii ISO 8601 -merkkijonon Date-objektiksi
  * @param dateString - ISO-muotoinen päivämäärämerkkijono
  * @returns Date-objekti
- * @throws Error jos merkkijono ei ole validi
+ * @throws ValidationError jos merkkijono ei ole validi
  */
 export function parseIsoDate(dateString: string): Date {
   if (!isValidIsoDateString(dateString)) {
-    throw new Error(`Invalid ISO date string: ${dateString}`);
+    throw new ValidationError(`Invalid ISO date string: ${dateString}`);
   }
 
   return new Date(dateString);
@@ -44,7 +46,8 @@ export function parseIsoDate(dateString: string): Date {
  * @returns true jos päivämäärä on menneisyydessä
  */
 export function isInPast(date: Date): boolean {
-  return date.getTime() < Date.now();
+  const now = Date.now();
+  return date.getTime() < now;
 }
 
 /**
