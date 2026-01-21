@@ -52,12 +52,22 @@ export function validateCreateBooking(
   // 1. Pakolliset kentät
   if (dto.roomId === undefined || dto.roomId === null) {
     errors.push({ field: 'roomId', message: 'roomId on pakollinen' });
+  } else if (typeof dto.roomId !== 'string') {
+    errors.push({
+      field: 'roomId',
+      message: 'roomId on oltava merkkijono',
+    });
   } else if (dto.roomId.trim() === '') {
     errors.push({ field: 'roomId', message: 'roomId ei voi olla tyhjä' });
   }
 
   if (dto.userId === undefined || dto.userId === null) {
     errors.push({ field: 'userId', message: 'userId on pakollinen' });
+  } else if (typeof dto.userId !== 'string') {
+    errors.push({
+      field: 'userId',
+      message: 'userId on oltava merkkijono',
+    });
   } else if (dto.userId.trim() === '') {
     errors.push({ field: 'userId', message: 'userId ei voi olla tyhjä' });
   }
@@ -73,6 +83,11 @@ export function validateCreateBooking(
 
   if (dto.title === undefined || dto.title === null) {
     errors.push({ field: 'title', message: 'title on pakollinen' });
+  } else if (typeof dto.title !== 'string') {
+    errors.push({
+      field: 'title',
+      message: 'title on oltava merkkijono',
+    });
   } else if (dto.title.trim() === '') {
     errors.push({ field: 'title', message: 'title ei voi olla tyhjä' });
   }
