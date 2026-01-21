@@ -4,7 +4,7 @@
 
 ## Projektin perustiedot
 
-**Projektin nimi:** Vincit Kokoushuonevarausjärjestelmä
+**Projektin nimi:** Meeting Room Booking API
 **Käyttäjä:** Lucas
 **Kuvaus:** REST API kokoushuoneiden varaamiseen
 **Tavoite:** Mahdollistaa varausten luonti, peruutus ja katselu huonekohtaisesti
@@ -121,7 +121,7 @@ npm run start
 ## Projektirakenne
 
 ```
-vincit-kokoushuonevaraus/
+meeting-room-booking-api/
 ├── src/
 │   ├── models/
 │   │   ├── booking.model.ts

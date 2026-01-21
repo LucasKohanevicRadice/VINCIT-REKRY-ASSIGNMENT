@@ -1,7 +1,7 @@
 {
-  "name": "vincit-kokoushuonevaraus",
+  "name": "meeting-room-booking-api",
   "version": "1.0.0",
-  "description": "REST API kokoushuoneiden varaamiseen",
+  "description": "REST API for meeting room bookings",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
