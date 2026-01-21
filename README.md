@@ -87,7 +87,7 @@ curl -X POST http://localhost:3000/api/bookings \
 ```bash
 # Kloonaa repositorio
 git clone <repository-url>
-cd vincit-kokoushuonevaraus
+cd trainee-assignment-lucas
 
 # Asenna riippuvuudet
 npm install
@@ -292,4 +292,4 @@ npm run typecheck      # TypeScript-tarkistus
 
 ## Tekijä
 
-Toteutettu osana Vincit Oy:n rekrytointitehtävää.
+Toteutettu osana fullstack trainee rekrytointitehtävää.
