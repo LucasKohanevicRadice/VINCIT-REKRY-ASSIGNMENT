@@ -7,11 +7,11 @@ import {
 import { validateCreateBooking } from '../validators/booking.validator';
 import { ValidationError } from '../errors/customErrors';
 
-export async function createBookingHandler(
+export function createBookingHandler(
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> {
+): void {
   try {
     const validation = validateCreateBooking(req.body);
 
@@ -26,12 +26,13 @@ export async function createBookingHandler(
   }
 }
 
-export async function deleteBookingHandler(
+export function deleteBookingHandler(
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> {
+): void {
   try {
+    // Express route parameters are guaranteed to be strings
     const id = req.params.id as string;
     deleteBooking(id);
     res.status(204).send();
@@ -40,12 +41,13 @@ export async function deleteBookingHandler(
   }
 }
 
-export async function getBookingsByRoomHandler(
+export function getBookingsByRoomHandler(
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> {
+): void {
   try {
+    // Express route parameters are guaranteed to be strings
     const roomId = req.params.roomId as string;
     const bookings = getBookingsByRoomId(roomId);
     res.status(200).json(bookings);
